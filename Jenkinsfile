@@ -1,36 +1,50 @@
 #! groovy
 pipeline
 {
-  agent any
-  stages
-  {
-    stage("deploy development")
+    agent any
+    stages
     {
-      when
-      {
-        expression { env.BRANCH_NAME == 'development' }
-      }
-      steps 
-      {
-        script
+        stage(DEVELOPMENT)
         {
-          sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/id_rsa deepu@3.111.198.170 "/home/deepu/deployment.sh"'
+            when
+            {
+                expression( env.BRANCH_NAME == 'development')
+            }
+            steps
+            {
+                scripts
+                {
+                    ssh -o StrictHostKeyChecking=no deepu@3.111.198.170 'sh /home/deepu/deployment.sh'
+                }
+            }
         }
-      }
-    }
-    stage("deploy master")
-    {
-      when
-      {
-        expression { env.BRANCH_NAME == 'master' }
-      }
-      steps
-      {
-        script
+        stage (MASTER)
         {
-         sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/id_rsa deepu@3.6.88.34 "/home/deepu/deployment.sh"'
+            when
+            {
+                expression(env.BRANCH_NAME=='master')
+            }
+            steps
+            {
+                script
+                {
+                    ssh -o StrictHostKeyChecking=no deepu@3.6.88.34 'sh /home/deepu/deployment.sh'
+                }
+            }
         }
-      }
+        stage( QA)
+        {
+          when
+         {
+         expression( env.BRANCH_NAME == 'qa' )
+         }
+         steps
+         {
+             scripts
+             {
+                 ssh -o StrictHostKeyChecking=no deepu@52.66.197.158 'sh /home/deepu/deployment.sh'
+             }
+         }
+        }
     }
-  }
 }
