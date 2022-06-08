@@ -12,7 +12,7 @@ pipeline
             }
             steps
             {
-                scripts
+                script
                 {
                     ssh -o StrictHostKeyChecking=no deepu@3.111.198.170 'sh /home/deepu/deployment.sh'
                 }
