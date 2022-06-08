@@ -38,13 +38,13 @@ pipeline
          {
          expression( env.BRANCH_NAME == 'qa' )
          }
-         steps
-         {
-             scripts
-             {
-                 ssh -o StrictHostKeyChecking=no deepu@52.66.197.158 'sh /home/deepu/deployment.sh'
-             }
-         }
+            steps
+            {
+                script
+                {
+                    ssh -o StrictHostKeyChecking=no deepu@52.66.197.158 'sh /home/deepu/deployment.sh'
+                }
+            }
         }
     }
 }
