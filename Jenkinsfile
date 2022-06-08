@@ -8,7 +8,7 @@ pipeline
         {
             when
             {
-                expression( env.BRANCH_NAME == 'development')
+                expression{ env.BRANCH_NAME == 'development'}
             }
             steps
             {
@@ -22,7 +22,7 @@ pipeline
         {
             when
             {
-                expression(env.BRANCH_NAME=='master')
+                expression{env.BRANCH_NAME=='master'}
             }
             steps
             {
@@ -36,7 +36,7 @@ pipeline
         {
           when
          {
-         expression( env.BRANCH_NAME == 'qa' )
+         expression{ env.BRANCH_NAME == 'qa' }
          }
             steps
             {
