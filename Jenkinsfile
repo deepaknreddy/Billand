@@ -4,7 +4,7 @@ pipeline
     agent any
     stages
     {
-        stage(DEVELOPMENT)
+        stage("DEVELOPMENT")
         {
             when
             {
@@ -18,7 +18,7 @@ pipeline
                 }
             }
         }
-        stage (MASTER)
+        stage ("MASTER")
         {
             when
             {
@@ -32,7 +32,7 @@ pipeline
                 }
             }
         }
-        stage( QA)
+        stage( "QA")
         {
           when
          {
@@ -47,3 +47,4 @@ pipeline
             }
         }
     }
+}
