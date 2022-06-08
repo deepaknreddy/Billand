@@ -28,7 +28,7 @@ pipeline
             {
                 script
                 {
-                    ssh -o StrictHostKeyChecking=no deepu@3.6.88.34 'sh /home/deepu/deployment.sh'
+                   sh 'ssh -o StrictHostKeyChecking=no deepu@3.6.88.34 "/home/deepu/deployment.sh"'
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline
             {
                 script
                 {
-                    ssh -o StrictHostKeyChecking=no deepu@52.66.197.158 'sh /home/deepu/deployment.sh'
+                   sh 'ssh -o StrictHostKeyChecking=no deepu@52.66.197.158 "sh /home/deepu/deployment.sh"'
                 }
             }
         }
